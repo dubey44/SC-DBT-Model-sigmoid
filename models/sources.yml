@@ -1,0 +1,14 @@
+sources:
+  - name: public_source # this is the source_name
+    database: test
+    schema: public
+    tables:
+      - name: tbl_mara_curated_scd1
+      - name: tbl_marc_curated_scd1
+      - name: tbl_vbap_curated_scd1
+      - name: tbl_vbak_curated_scd1
+      - name: tbl_kna_curated_scd1
+      - name: tbl_lfa1_curated_scd1
+      - name: tbl_vbrp_curated_scd1
+      - name: tbl_vbep_cdf_base
+      - name: tbl_mvke_cdf_base
