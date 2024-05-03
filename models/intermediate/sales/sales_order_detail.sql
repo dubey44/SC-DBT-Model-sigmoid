@@ -10,7 +10,7 @@ vbap as(
     from {{ref('VBAP')}}
 ),
 vbep as(
-    select VBELN,BMENG,WEPOS 
+    select sales_document as VBELN ,confirmed_quantity as BMENG, goods_issue_date as WEPOS
     from {{ref('VBEP')}}
 )
 select 

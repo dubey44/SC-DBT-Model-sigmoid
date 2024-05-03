@@ -33,7 +33,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   conagra:
     # Config indicated by + and applies to all files under models/example/
-    raw:
-      +schema: raw
-    curated:
-      +schema: curated
+    stage:
+      +schema: stage
+    intermediate:
+      +schema: intermediate
