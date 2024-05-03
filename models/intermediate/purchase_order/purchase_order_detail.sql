@@ -2,12 +2,19 @@
 
 with ekko as
 (
-    select EBELN,EBELP,EMLIF,WERKS 
+    select EBELN
     from {{ref('EKKO')}}
+),
+ekpo as
+(
+    select EBELN,EBELP,EMLIF,WERKS 
+    from {{ref('EKPO')}}
 )
 select
-EBELN as purchasing_doc_num,
-EBELP as purchasing_requisition_item_no,
-EMLIF as vendor_to_be_supplied,
-WERKS as plant
-from ekko
+ekko.EBELN as purchasing_doc_num,
+ekpo.EBELP as purchasing_requisition_item_no,
+ekpo.EMLIF as vendor_to_be_supplied,
+ekpo.WERKS as plant
+from ekko 
+join ekpo
+on ekko.EBELN = ekpo.EBELN

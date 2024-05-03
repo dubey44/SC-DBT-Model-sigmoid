@@ -13,4 +13,5 @@ sources:
       - name: tbl_vbep_curated_scd1
       - name: tbl_mvke_cdf_base
       - name: raw_sap_tbl_ekko_cdf_base
+      - name: tbl_ekpo_cdf_base
       - name: kna1

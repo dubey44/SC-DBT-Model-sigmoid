@@ -1,10 +1,13 @@
-{{ config(materialized='table') }}
-with lfa1 as
-(
-    select KNA1, BBBNR, BBBNR, BRSCH 
-    from {{ref('LFA1')}}
-),
+-- {{ config(materialized='table') }}
+-- with kna1 as
+-- (
+--     select KUNNR, BBBNR, BBBNR, BRSCH 
+--     from {{ref('LFA1')}}
+-- )
 
+
+
+-- MANDT
 
 -- Field names	source tables
 -- Cust number	KNA1
