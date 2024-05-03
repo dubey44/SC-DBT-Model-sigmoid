@@ -9,7 +9,7 @@ knvv as(
 )
 select 
 kna1.KUNNR as cust_number,
-knvv.X as cust_segment
+knvv.KDGRP as cust_segment
 
 from 
 kna1
