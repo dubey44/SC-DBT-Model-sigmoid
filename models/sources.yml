@@ -1,7 +1,7 @@
 sources:
   - name: public_source # this is the source_name
     database: test
-    schema: public
+    schema: raw
     tables:
       - name: tbl_mara_curated_scd1
       - name: tbl_marc_curated_scd1
