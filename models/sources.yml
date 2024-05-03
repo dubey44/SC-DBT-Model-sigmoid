@@ -15,3 +15,4 @@ sources:
       - name: raw_sap_tbl_ekko_cdf_base
       - name: tbl_ekpo_cdf_base
       - name: kna1
+      - name: knvv
