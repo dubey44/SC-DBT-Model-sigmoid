@@ -20,7 +20,8 @@ Try running the following commands:
 # Tables in postgres
 -- TBL_MARA_CURATED_SCD1
 
-``` CREATE TABLE raw.TBL_MARA_CURATED_SCD1 (
+``` 
+CREATE TABLE raw.TBL_MARA_CURATED_SCD1 (
     client VARCHAR,
     material_number VARCHAR,
     created_on TIMESTAMP,
@@ -322,7 +323,7 @@ Try running the following commands:
 ```
 
 -- TBL_MARC_CURATED_SCD1
-
+``` 
 CREATE TABLE raw.TBL_MARC_CURATED_SCD1 (
     client VARCHAR,
     material_number VARCHAR,
@@ -576,9 +577,10 @@ CREATE TABLE raw.TBL_MARC_CURATED_SCD1 (
     __START_AT TIMESTAMP,
     __END_AT TIMESTAMP
 );
+``` 
 
 -- TBL_VBAP_CURATED_SCD1
-
+``` 
 CREATE TABLE IF NOT EXISTS raw.TBL_VBAP_CURATED_SCD1 (
     MANDT VARCHAR,
     VBELN VARCHAR,
@@ -849,9 +851,10 @@ CREATE TABLE IF NOT EXISTS raw.TBL_VBAP_CURATED_SCD1 (
     operation VARCHAR,
     operation_date TIMESTAMP
 );
-
+``` 
 
 -- TBL_VBAK_CURATED_SCD1
+``` 
 CREATE TABLE IF NOT EXISTS raw.TBL_VBAK_CURATED_SCD1(
     MANDT VARCHAR,
     VBELN VARCHAR,
@@ -1034,9 +1037,10 @@ CREATE TABLE IF NOT EXISTS raw.TBL_VBAK_CURATED_SCD1(
     operation VARCHAR,
     operation_date TIMESTAMP
 );
+``` 
 
 -- TBL_KNA_CURATED_SCD1
-
+``` 
 CREATE TABLE IF NOT EXISTS TBL_KNA_CURATED_SCD1(
     MANDT VARCHAR,
     KUNNR VARCHAR,
@@ -1240,10 +1244,10 @@ CREATE TABLE IF NOT EXISTS TBL_KNA_CURATED_SCD1(
     operation VARCHAR,
     operation_date TIMESTAMP
 );
-
+``` 
 
 -- TBL_LFA1_CURATED_SCD1
-
+``` 
 CREATE TABLE IF NOT EXISTS raw.TBL_LFA1_CURATED_SCD1(
     MANDT VARCHAR,
     LIFNR VARCHAR,
@@ -1388,9 +1392,10 @@ CREATE TABLE IF NOT EXISTS raw.TBL_LFA1_CURATED_SCD1(
     operation VARCHAR, 
     operation_date TIMESTAMP
 );
+``` 
 
 -- TBL_VBRP_CURATED_SCD1
-
+``` 
 CREATE TABLE IF NOT EXISTS raw.TBL_VBRP_CURATED_SCD1(
     MANDT VARCHAR,
     VBELN VARCHAR,
@@ -1611,8 +1616,10 @@ CREATE TABLE IF NOT EXISTS raw.TBL_VBRP_CURATED_SCD1(
     operation VARCHAR, 
     operation_date TIMESTAMP
 );
+``` 
 
 -- tbl_mvke_cdf_base
+``` 
 CREATE TABLE IF NOT EXISTS raw.tbl_mvke_cdf_base (
     mandt VARCHAR,
     matnr VARCHAR,
@@ -1685,9 +1692,10 @@ CREATE TABLE IF NOT EXISTS raw.tbl_mvke_cdf_base (
     operation VARCHAR,
     operation_date TIMESTAMP
 );
+``` 
 
 -- tbl_vbep_cdf_base
-
+``` 
 CREATE TABLE IF NOT EXISTS raw.tbl_vbep_cdf_base (
     mandt VARCHAR,
     vbeln VARCHAR,
@@ -1753,7 +1761,10 @@ CREATE TABLE IF NOT EXISTS raw.tbl_vbep_cdf_base (
     operation VARCHAR,
     operation_date TIMESTAMP
 );
+``` 
 
+-- tbl_vbep_curated_scd1
+```
 CREATE TABLE IF NOT EXISTS raw.tbl_vbep_curated_scd1 (
     client VARCHAR,
     sales_document VARCHAR,
@@ -1818,8 +1829,10 @@ CREATE TABLE IF NOT EXISTS raw.tbl_vbep_curated_scd1 (
     matr_availability_date TIMESTAMP,
     is_quarantined BOOLEAN
 );
+```
 
-
+-- RAW_SAP_TBL_EKKO_CDF_BASE
+```
 CREATE TABLE IF NOT EXISTS raw.RAW_SAP_TBL_EKKO_CDF_BASE (
     MANDT VARCHAR,
     EBELN VARCHAR,
@@ -1960,7 +1973,10 @@ CREATE TABLE IF NOT EXISTS raw.RAW_SAP_TBL_EKKO_CDF_BASE (
     OPERATION VARCHAR,
     OPERATION_DATE TIMESTAMP
 );
+```
 
+-- KNA1
+```
 CREATE TABLE IF NOT EXISTS raw.KNA1 (
     client VARCHAR,
     customer_number VARCHAR,
@@ -2142,8 +2158,10 @@ CREATE TABLE IF NOT EXISTS raw.KNA1 (
     __START_AT TIMESTAMP,
     __END_AT TIMESTAMP
 );
+```
 
 -- TBL_EKPO_CDF_BASE
+```
 CREATE TABLE IF NOT EXISTS raw.TBL_EKPO_CDF_BASE(
     MANDT varchar,
     EBELN varchar,
@@ -2434,6 +2452,7 @@ CREATE TABLE IF NOT EXISTS raw.TBL_EKPO_CDF_BASE(
     operation varchar, 
     operation_date timestamp
 );
+```
 
 
 
