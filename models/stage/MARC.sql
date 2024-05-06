@@ -3,4 +3,4 @@
 select
     *
 from
-    {{ source('public_source', 'tbl_marc_curated_scd1') }}
+    {{ source('raw_source', 'tbl_marc_curated_scd1') }}

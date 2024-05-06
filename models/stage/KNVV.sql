@@ -3,4 +3,4 @@
 select
     *
 from
-    {{ source('public_source', 'knvv') }}
+    {{ source('raw_source', 'knvv') }}

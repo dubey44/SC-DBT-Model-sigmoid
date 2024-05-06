@@ -42,9 +42,6 @@ left join purchase_order_detail pod on i.material_number = pod.material_number
 left join vendor_master vm on vm.vendor_account_no = pod.vendor_to_be_supplied
 left join material_usage mu on mu.material_number = i.material_number and i.storage_loc = mu.storage_loc and mu.plant = i.plant
 
-
-
-
 group by
 i.material_number,
 i.storage_loc,
