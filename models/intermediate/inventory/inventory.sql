@@ -6,7 +6,7 @@ with mara as
     from {{ref('MARA')}}
 ),
 marc as(
-    select material_number,external_procurement_storage_loc, total_replenishment_lead_time
+    select material_number,plant,external_procurement_storage_loc, total_replenishment_lead_time
     from {{ref('MARC')}}
 ),
 mvke as(
@@ -16,6 +16,7 @@ mvke as(
 select 
 mara.material_number as material_number,
 marc.external_procurement_storage_loc as storage_loc, 
+marc.plant as plant,
 mara.volume as volume,
 mara.brand as brand,
 mara.material_type as material_type,

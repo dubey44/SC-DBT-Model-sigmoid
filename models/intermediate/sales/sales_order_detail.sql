@@ -2,7 +2,7 @@
 
 with vbak as
 (
-    select VBELN,VTWEG
+    select VBELN,VTWEG,KUNNR
     from {{ref('VBAK')}}
 ),
 vbap as(
@@ -23,8 +23,8 @@ vbep.BMENG as confirmed_quantity,
 vbep.WEPOS as goods_issue_date,
 vbak.VTWEG as sales_channel,
 vbap.ERDAT as date_of_sales,
-vbap.KMPMG as quantity
--- vbap.KUNNR as customer_number
+vbap.KMPMG as quantity,
+vbak.KUNNR as customer_number
 from vbak 
 left join vbap on vbak.VBELN = vbap.VBELN
 join vbep on vbak.VBELN = vbep.VBELN
