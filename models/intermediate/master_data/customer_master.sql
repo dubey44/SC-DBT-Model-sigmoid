@@ -1,11 +1,12 @@
 {{ config(materialized='table') }}
 with kna1 as
 (
-    select MANDT KUNNR
+    select MANDT, KUNNR
     from {{ref('KNA1')}}
 ),
 knvv as(
-    select MANDT, KUNNR
+    select MANDT, KUNNR,KDGRP
+    from {{ref('KNVV')}}
 )
 select 
 kna1.KUNNR as cust_number,

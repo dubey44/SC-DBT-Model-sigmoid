@@ -14,5 +14,5 @@ sources:
       - name: tbl_mvke_cdf_base
       - name: raw_sap_tbl_ekko_cdf_base
       - name: tbl_ekpo_cdf_base
-      - name: kna1
+      - name: tbl_kna1_cdf_base
       - name: knvv
