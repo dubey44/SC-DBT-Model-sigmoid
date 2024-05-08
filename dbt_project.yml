@@ -37,3 +37,13 @@ models:
       +schema: stage
     intermediate:
       +schema: intermediate
+    mart:
+      +schema: mart
+
+seeds:
+  SC_DBT_Model_sigmoid:
+    +schema: raw
+    column_types:
+        underscore_detected_as_int: varchar(32)
+    # +quote_columns: true
+
