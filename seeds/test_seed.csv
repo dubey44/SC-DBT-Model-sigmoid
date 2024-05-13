@@ -1,6 +1,0 @@
-id,text_column,numeric_column,boolean_column,date_column,json_column
-0005766071,"Example text 1",123.45,true,2024-05-06,{"key": "value1"}
-0014119999999999466,"Example text 2",678.90,false,2024-05-07,{"key": "value2"}
-3,"Example text 3",345.67,true,2024-05-08,{"key": "value3"}
-4,"Example text 4",901.23,false,2024-05-09,{"key": "value4"}
-5,"Example text 5",456.78,true,2024-05-10,{"key": "value5"}
