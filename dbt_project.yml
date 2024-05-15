@@ -42,4 +42,4 @@ models:
 
 seeds:
   SC_DBT_Model_sigmoid:
-    +schema: public
+    +schema: raw

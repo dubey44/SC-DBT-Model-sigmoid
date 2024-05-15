@@ -1,4 +1,4 @@
-{{ config(materialized='incremental') }}
+{{ config(materialized='table') }}
 
 with mara as
 (
@@ -13,6 +13,7 @@ mvke as(
     select MATNR,PRODH 
     from {{ref('MVKE')}}
 )
+
 select 
 mara.material_number as material_number,
 marc.external_procurement_storage_loc as storage_loc, 

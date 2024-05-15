@@ -1,4 +1,4 @@
-{{ config(materialized='incremental') }}
+{{ config(materialized='table') }}
 with kna1 as
 (
     select MANDT, KUNNR

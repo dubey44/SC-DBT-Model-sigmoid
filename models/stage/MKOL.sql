@@ -3,4 +3,4 @@
 select
     *
 from
-    {{ source('raw_source', 'tbl_mvke_cdf_base') }}
+    {{ source('raw_source', 'mkol') }}

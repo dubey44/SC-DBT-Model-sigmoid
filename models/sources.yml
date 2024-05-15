@@ -4,15 +4,24 @@ sources:
     schema: raw
     tables:
       - name: tbl_mara_curated_scd1
-      - name: tbl_marc_curated_scd1
       - name: tbl_vbap_curated_scd1
       - name: tbl_vbak_curated_scd1
-      - name: tbl_kna_curated_scd1
       - name: tbl_lfa1_curated_scd1
-      - name: tbl_vbrp_curated_scd1
       - name: tbl_vbep_curated_scd1
       - name: tbl_mvke_cdf_base
       - name: raw_sap_tbl_ekko_cdf_base
       - name: tbl_ekpo_cdf_base
       - name: tbl_kna1_cdf_base
       - name: knvv
+      - name: marc
+      - name: march
+      - name: mbew
+      - name: mbewh
+      - name: mchb
+      - name: mchbh
+      - name: mkol
+      - name: mkolh
+      - name: mska
+      - name: mskah
+      - name: mslb
+      - name: mslbh
