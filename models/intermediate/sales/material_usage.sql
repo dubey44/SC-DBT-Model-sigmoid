@@ -1,4 +1,4 @@
-{{ config(materialized='table') }}
+{{ config(materialized='incremental') }}
 
 with sales_order_detail as
 (

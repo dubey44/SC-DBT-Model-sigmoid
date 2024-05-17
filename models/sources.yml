@@ -25,3 +25,8 @@ sources:
       - name: mskah
       - name: mslb
       - name: mslbh
+      - name: mch1
+      - name: mkpf
+      - name: mseg
+      - name: t001l
+      - name: t001w

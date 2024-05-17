@@ -3,4 +3,4 @@
 select
     *
 from
-    {{ source('raw_source', 'march') }}
+    {{ source('raw_source', 'mseg') }}

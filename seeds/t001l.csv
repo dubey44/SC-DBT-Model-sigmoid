@@ -1,0 +1,11 @@
+client,plant,issue_loc_for_prod_order,description_of_storage_location,division,negative_stocks_allowed_in_storage_location,freezing_book_inventory_bal,storage_location_mrp_indicator,storage_location_authorization,storage_location_allocated,handling_unit_requirement,partner_storage_location,sales_organization,distribution_channel,shipping_receiving_point,vendor_account_number,competitor,business_system_of_mes,inventory_management_type,license_number_for_untaxed_stock,td_in_transit_flag,tank_assignment_indicator,is_quarantined,__start_at,__end_at
+100,0500,0001,Primary Stock, , ,X, , , , , , , , , , , , , , , ,false,2023-10-05 08:21:01.000000,""
+100,0500,0002,Secondary Stock, , ,X, , , , , , , , , , , , , , , ,false,2023-10-05 08:21:01.000000,""
+100,0509,0001,Primary Stock, , ,X, , , , , , , , , , , , , , , ,false,2023-10-05 08:21:01.000000,""
+100,0509,0002,Secondary Stock, , ,X, , , , , , , , , , , , , , , ,false,2023-10-05 08:21:01.000000,""
+100,0510,0001,Primary Stock, , ,X, , , , , , , , , , , , , , , ,false,2023-10-05 08:21:01.000000,""
+100,0510,0002,Secondary Stock, , ,X, , , , , , , , , , , , , , , ,false,2023-10-05 08:21:01.000000,""
+100,0513,0001,Primary Stock,00, ,X, , , ,X,1001,1000,10,0513,A0513,0000000513, , , , , ,false,2023-10-05 08:21:01.000000,""
+100,0513,0002,Secondary Stock,00, ,X, , , ,X,1002,1000,10,0513,A0513,0000000513, , , , , ,false,2023-10-05 08:21:01.000000,""
+100,0513,0003,Raw/Semi,00, , , , , ,X,1003,1000,10,0513,A0513,0000000513, , , , , ,false,2023-10-05 08:21:01.000000,""
+100,0513,0004,Non-valuated Mat, , , , , , , , , , , , , , , , , , ,false,2023-10-05 08:21:01.000000,""
