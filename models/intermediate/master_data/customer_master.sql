@@ -1,20 +1,17 @@
 {{ config(materialized='incremental') }}
 with kna1 as
 (
-    select MANDT, KUNNR
+    select client, customer_number
     from {{ref('KNA1')}}
-),
-knvv as(
-    select MANDT, KUNNR,KDGRP
-    from {{ref('KNVV')}}
 )
+
 select 
-kna1.KUNNR as cust_number,
-knvv.KDGRP as cust_segment
+kna1.customer_number as cust_number
+-- knvv.KDGRP as cust_segment
 
 from 
 kna1
-join knvv on kna1.KUNNR = knvv.KUNNR
+-- join knvv on kna1.customer_number = knvv.KUNNR
 
 
 

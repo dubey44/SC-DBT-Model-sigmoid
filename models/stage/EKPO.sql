@@ -3,4 +3,4 @@
 select
     *
 from
-    {{ source('raw_source', 'tbl_ekpo_cdf_base') }}
+    {{ source('raw_source', 'tbl_ekpo_curated_scd1') }}

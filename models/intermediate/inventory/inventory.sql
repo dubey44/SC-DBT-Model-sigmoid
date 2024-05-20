@@ -10,7 +10,7 @@ marc as(
     from {{ref('MARC')}}
 ),
 mvke as(
-    select MATNR,PRODH 
+    select material_num,product_hierarchy
     from {{ref('MVKE')}}
 )
 
@@ -21,9 +21,8 @@ marc.plant as plant,
 mara.volume as volume,
 mara.brand as brand,
 mara.material_type as material_type,
-mvke.PRODH as product,
+mvke.product_hierarchy as product,
 marc.total_replenishment_lead_time as total_replenishment_lead_time
 from mara
 join marc on mara.material_number = marc.material_number
-join mvke on mara.material_number = mvke.MATNR
-
+join mvke on mara.material_number = mvke.material_num
