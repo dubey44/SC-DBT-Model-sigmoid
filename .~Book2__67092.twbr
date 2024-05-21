@@ -166,7 +166,7 @@
       <_.fcp.ObjectModelTableType.true...column caption='final_days_of_supply' datatype='table' name='[__tableau_internal_object_id__].[final_days_of_supply (mart.final_days_of_supply)_3D24F6DBA7D64EF8ACFAE9159F95B228]' role='measure' type='quantitative' />
       <column caption='Daily Usage' datatype='real' name='[daily_usage]' role='measure' type='quantitative' />
       <column caption='Days Of Supply' datatype='real' name='[days_of_supply]' role='measure' type='quantitative' />
-      <column caption='Material Number' datatype='string' name='[material_number]' role='dimension' type='nominal' />
+      <column aggregation='CountD' caption='Material Number' datatype='string' default-role='measure' default-type='quantitative' name='[material_number]' role='dimension' type='nominal' />
       <column caption='Plant' datatype='string' name='[plant]' role='dimension' type='nominal' />
       <column caption='Sales Channel' datatype='string' name='[sales_channel]' role='dimension' type='nominal' />
       <column caption='Storage Loc' datatype='string' name='[storage_loc]' role='dimension' type='nominal' />
@@ -201,7 +201,7 @@
           </datasources>
           <datasource-dependencies datasource='federated.0xxw0i91aiajwe18h2x6f0xy89s3'>
             <column caption='Days Of Supply' datatype='real' name='[days_of_supply]' role='measure' type='quantitative' />
-            <column caption='Material Number' datatype='string' name='[material_number]' role='dimension' type='nominal' />
+            <column aggregation='CountD' caption='Material Number' datatype='string' default-role='measure' default-type='quantitative' name='[material_number]' role='dimension' type='nominal' />
             <column-instance column='[material_number]' derivation='None' name='[none:material_number:nk]' pivot='key' type='nominal' />
             <column-instance column='[days_of_supply]' derivation='Sum' name='[sum:days_of_supply:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
@@ -236,7 +236,7 @@
           </datasources>
           <datasource-dependencies datasource='federated.0xxw0i91aiajwe18h2x6f0xy89s3'>
             <column caption='Days Of Supply' datatype='real' name='[days_of_supply]' role='measure' type='quantitative' />
-            <column caption='Material Number' datatype='string' name='[material_number]' role='dimension' type='nominal' />
+            <column aggregation='CountD' caption='Material Number' datatype='string' default-role='measure' default-type='quantitative' name='[material_number]' role='dimension' type='nominal' />
             <column-instance column='[material_number]' derivation='None' name='[none:material_number:nk]' pivot='key' type='nominal' />
             <column-instance column='[days_of_supply]' derivation='Sum' name='[sum:days_of_supply:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
@@ -271,7 +271,7 @@
           </datasources>
           <datasource-dependencies datasource='federated.0xxw0i91aiajwe18h2x6f0xy89s3'>
             <column caption='Days Of Supply' datatype='real' name='[days_of_supply]' role='measure' type='quantitative' />
-            <column caption='Material Number' datatype='string' name='[material_number]' role='dimension' type='nominal' />
+            <column aggregation='CountD' caption='Material Number' datatype='string' default-role='measure' default-type='quantitative' name='[material_number]' role='dimension' type='nominal' />
             <column-instance column='[material_number]' derivation='None' name='[none:material_number:nk]' pivot='key' type='nominal' />
             <column-instance column='[days_of_supply]' derivation='Sum' name='[sum:days_of_supply:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
@@ -309,22 +309,38 @@
             <datasource caption='final_days_of_supply (mart.final_days_of_supply) (test)' name='federated.0xxw0i91aiajwe18h2x6f0xy89s3' />
           </datasources>
           <datasource-dependencies datasource='federated.0xxw0i91aiajwe18h2x6f0xy89s3'>
-            <column caption='Material Number' datatype='string' name='[material_number]' role='dimension' type='nominal' />
-            <column-instance column='[material_number]' derivation='None' name='[none:material_number:nk]' pivot='key' type='nominal' />
+            <column caption='Daily Usage' datatype='real' name='[daily_usage]' role='measure' type='quantitative' />
+            <column caption='Days Of Supply' datatype='real' name='[days_of_supply]' role='measure' type='quantitative' />
+            <column-instance column='[plant]' derivation='None' name='[none:plant:nk]' pivot='key' type='nominal' />
+            <column caption='Plant' datatype='string' name='[plant]' role='dimension' type='nominal' />
+            <column-instance column='[daily_usage]' derivation='Sum' name='[sum:daily_usage:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[days_of_supply]' derivation='Sum' name='[sum:days_of_supply:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <aggregation value='true' />
         </view>
         <style />
         <panes>
-          <pane selection-relaxation-option='selection-relaxation-allow'>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:daily_usage:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='4' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]'>
             <view>
               <breakdown value='auto' />
             </view>
             <mark class='Automatic' />
           </pane>
         </panes>
-        <rows />
-        <cols>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[none:material_number:nk]</cols>
+        <rows>([federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:daily_usage:qk] + [federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk])</rows>
+        <cols>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[none:plant:nk]</cols>
       </table>
       <simple-id uuid='{C767B1A7-154C-4318-BC97-A8ED67F33FC5}' />
     </worksheet>
@@ -489,7 +505,7 @@
       </cards>
       <simple-id uuid='{AC89585D-FAC3-4761-9B29-965560C1F0EA}' />
     </window>
-    <window class='worksheet' maximized='true' name='Sheet 3'>
+    <window class='worksheet' name='Sheet 3'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -515,7 +531,7 @@
       </viewpoint>
       <simple-id uuid='{DE88816C-512E-428E-A8E9-A8E64788EA00}' />
     </window>
-    <window class='worksheet' name='Sheet 4'>
+    <window class='worksheet' maximized='true' name='Sheet 4'>
       <cards>
         <edge name='left'>
           <strip size='160'>
