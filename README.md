@@ -3052,6 +3052,38 @@ CREATE TABLE raw.time_dimension (
     is_quarantined BOOLEAN
 );
 ```
+Functions that needs to be created in Raw layer of postgres DB
+```
+CREATE OR REPLACE FUNCTION raw.get_last_day(year INT, month INT)
+RETURNS DATE AS $$
+DECLARE
+    last_day_of_month DATE;
+BEGIN
+    -- Set the date to the first day of the next month and subtract one day
+    last_day_of_month := DATE_TRUNC('MONTH', MAKE_DATE(year, month, 1)) + INTERVAL '1 MONTH' - INTERVAL '1 DAY';
+    RETURN last_day_of_month;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+```
+CREATE OR REPLACE FUNCTION raw.get_num(num Numeric)
+  RETURNS Numeric
+  RETURN coalesce(num, 0);
+```
+
+```
+CREATE OR REPLACE FUNCTION raw.get_sum(num1 Numeric, num2 Numeric, num3 Numeric, num4 Numeric, num5 Numeric)
+  RETURNS Numeric
+  RETURN coalesce(num1 + num2 + num3 + num4 + num5, 0);
+```
+
+```
+CREATE OR REPLACE FUNCTION raw.get_division(num1 INT, num2 INT)
+  RETURNS INT
+  RETURN coalesce(num1 / num2,0);
+```
+
 
 
 
