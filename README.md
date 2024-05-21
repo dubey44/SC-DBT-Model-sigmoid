@@ -3052,7 +3052,7 @@ CREATE TABLE raw.time_dimension (
     is_quarantined BOOLEAN
 );
 ```
-Functions that needs to be created in Raw layer of postgres DB
+# Functions that needs to be created in Raw layer of postgres DB
 ```
 CREATE OR REPLACE FUNCTION raw.get_last_day(year INT, month INT)
 RETURNS DATE AS $$
