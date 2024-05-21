@@ -18,7 +18,7 @@ Try running the following commands:
 
 
 # Tables in postgres
--- TBL_MARA_CURATED_SCD1
+### TBL_MARA_CURATED_SCD1
 
 ``` 
 CREATE TABLE raw.TBL_MARA_CURATED_SCD1 (
@@ -322,7 +322,7 @@ CREATE TABLE raw.TBL_MARA_CURATED_SCD1 (
 );
 ```
 
--- TBL_MARC_CURATED_SCD1
+### TBL_MARC_CURATED_SCD1
 ``` 
 CREATE TABLE raw.TBL_MARC_CURATED_SCD1 (
     client VARCHAR,
@@ -579,7 +579,7 @@ CREATE TABLE raw.TBL_MARC_CURATED_SCD1 (
 );
 ``` 
 
--- TBL_VBAP_CURATED_SCD1
+### TBL_VBAP_CURATED_SCD1
 ``` 
 CREATE TABLE IF NOT EXISTS raw.TBL_VBAP_CURATED_SCD1 (
     client VARCHAR,
@@ -868,7 +868,7 @@ CREATE TABLE IF NOT EXISTS raw.TBL_VBAP_CURATED_SCD1 (
 );
 ``` 
 
--- TBL_VBAK_CURATED_SCD1
+### TBL_VBAK_CURATED_SCD1
 ``` 
 CREATE TABLE IF NOT EXISTS raw.TBL_VBAK_CURATED_SCD1(
     client VARCHAR,
@@ -1055,7 +1055,7 @@ CREATE TABLE IF NOT EXISTS raw.TBL_VBAK_CURATED_SCD1(
 ``` 
 
 
--- TBL_LFA1_CURATED_SCD1
+### TBL_LFA1_CURATED_SCD1
 ``` 
 CREATE TABLE raw.tbl_lfa1_curated_scd1 (
     client VARCHAR,
@@ -1162,7 +1162,7 @@ CREATE TABLE raw.tbl_lfa1_curated_scd1 (
 
 ``` 
 
--- mvke
+### mvke
 ``` 
 CREATE TABLE raw.mvke (
     client VARCHAR,
@@ -1236,76 +1236,7 @@ CREATE TABLE raw.mvke (
     is_quarantined BOOLEAN
 );
 ``` 
-
--- tbl_vbep_curated_scd1
-``` 
-CREATE TABLE IF NOT EXISTS raw.tbl_vbep_curated_scd1 (
-    client VARCHAR,
-    sales_document VARCHAR,
-    sales_document_item DECIMAL(7,0),
-    delivery_schedule_line_num DECIMAL(5,0),
-    schedule_line_category VARCHAR,
-    item_relevant_delivery VARCHAR,
-    schedule_line_date TIMESTAMP,
-    arrival_time TIMESTAMP,
-    order_quantity_in_sales_units NUMERIC(15,3),
-    confirmed_quantity NUMERIC(15,3),
-    sales_unit VARCHAR,
-    req_quan_mgmt_stockk_units NUMERIC(15,3),
-    base_uom VARCHAR,
-    requirement_date TIMESTAMP,
-    requirement_type VARCHAR,
-    planning_type VARCHAR,
-    business_document_number VARCHAR,
-    business_item_number DECIMAL(7,0),
-    schedule_line DECIMAL(5,0),
-    earliest_possible_reservation_date TIMESTAMP,
-    maintenance_request DECIMAL(11,0),
-    purchase_requisition_num VARCHAR,
-    order_type VARCHAR,
-    purchasing_document_category VARCHAR,
-    confirmation_status_of_schedule_line VARCHAR,
-    invoice_receipt_indicator VARCHAR,
-    return_date_for_returnable_packaging TIMESTAMP,
-    date_type VARCHAR,
-    transportation_planning_date TIMESTAMP,
-    material_staging TIMESTAMP,
-    loading_date TIMESTAMP,
-    goods_issue_date TIMESTAMP,
-    corrected_quantity_in_sales_unit NUMERIC(15,3),
-    schedule_line_blocked_for_delivery VARCHAR,
-    group_definition_of_structure_data DECIMAL(4,0),
-    release_type VARCHAR,
-    forecast_delivery_schedule_num DECIMAL(11,0),
-    committed_quantity NUMERIC(15,3),
-    size_2 NUMERIC(15,3),
-    size_3 NUMERIC(15,3),
-    unit_of_measure VARCHAR,
-    formula_key VARCHAR,
-    numerator_for_conversion_sales_sku DECIMAL(6,0),
-    denominator_for_conversion_sales_sku DECIMAL(6,0),
-    availability_confirmed_automatically VARCHAR,
-    movement_type VARCHAR,
-    item_num_purchase_requisition DECIMAL(6,0),
-    schedule_line_type_edi VARCHAR,
-    order_number VARCHAR,
-    planned_order_number VARCHAR,
-    bom_explosion_number VARCHAR,
-    customer_engineering_change_status VARCHAR,
-    guaranteed DOUBLE PRECISION,
-    material_staging_time TIMESTAMP,
-    transp_planning_time TIMESTAMP,
-    loading_time TIMESTAMP,
-    time_of_goods_issue TIMESTAMP,
-    route_schedule VARCHAR,
-    handover_date TIMESTAMP,
-    handover_time TIMESTAMP,
-    matr_availability_date TIMESTAMP,
-    is_quarantined BOOLEAN
-);
-```
-
--- tbl_vbep_curated_scd1
+### tbl_vbep_curated_scd1
 ```
 CREATE TABLE IF NOT EXISTS raw.tbl_vbep_curated_scd1 (
     client VARCHAR,
@@ -1373,7 +1304,7 @@ CREATE TABLE IF NOT EXISTS raw.tbl_vbep_curated_scd1 (
 );
 ```
 
--- tbl_ekko_curated_scd1
+### tbl_ekko_curated_scd1
 ```
 CREATE TABLE raw.tbl_ekko_curated_scd1 (
     client VARCHAR,
@@ -1515,7 +1446,7 @@ CREATE TABLE raw.tbl_ekko_curated_scd1 (
     is_quarantined BOOLEAN
 );
 ```
--- tbl_kna1_curated_scd1
+### tbl_kna1_curated_scd1
 ```
 CREATE TABLE raw.tbl_kna1_curated_scd1 (
     client VARCHAR,
@@ -1700,7 +1631,7 @@ CREATE TABLE raw.tbl_kna1_curated_scd1 (
 );
 ```
 
--- tbl_ekpo_curated_scd1
+### tbl_ekpo_curated_scd1
 ```
 CREATE TABLE raw.tbl_ekpo_curated_scd1 (
     dependent_items_area_free_ind VARCHAR,
@@ -1990,7 +1921,7 @@ CREATE TABLE raw.tbl_ekpo_curated_scd1 (
     is_quarantined BOOLEAN
 );
 ```
--- marc
+### marc
 ```CREATE TABLE raw.marc (
     client VARCHAR,
     material_number VARCHAR,
@@ -2246,7 +2177,7 @@ CREATE TABLE raw.tbl_ekpo_curated_scd1 (
     __end_at TIMESTAMP
 );
 ```
--- march
+### march
 ```
 CREATE TABLE raw.march (
     client VARCHAR,
@@ -2264,7 +2195,7 @@ CREATE TABLE raw.march (
     is_quarantined BOOLEAN
 );
 ```
--- mbew
+### mbew
 ```
 CREATE TABLE raw.mbew (
     client VARCHAR,
@@ -2379,7 +2310,7 @@ CREATE TABLE raw.mbew (
     is_quarantined BOOLEAN
 );
 ```
--- mbewh
+### mbewh
 ```
 CREATE TABLE raw.mbewh (
     client VARCHAR,
@@ -2400,7 +2331,7 @@ CREATE TABLE raw.mbewh (
     is_quarantined BOOLEAN
 );
 ```
--- mchb
+### mchb
 ```
 CREATE TABLE raw.mchb (
     client VARCHAR,
@@ -2444,7 +2375,7 @@ CREATE TABLE raw.mchb (
     is_quarantined BOOLEAN
 );
 ```
--- mchbh
+### mchbh
 ```
 CREATE TABLE raw.mchbh (
     client VARCHAR,
@@ -2463,7 +2394,7 @@ CREATE TABLE raw.mchbh (
     is_quarantined BOOLEAN
 );
 ```
--- mkol
+### mkol
 ```
 CREATE TABLE raw.mkol (
     client VARCHAR,
@@ -2505,7 +2436,7 @@ CREATE TABLE raw.mkol (
     is_quarantined BOOLEAN
 );
 ```
--- mkolh
+### mkolh
 ```
 CREATE TABLE raw.mkolh (
     client VARCHAR,
@@ -2524,7 +2455,7 @@ CREATE TABLE raw.mkolh (
     is_quarantined BOOLEAN
 );
 ```
--- mska
+### mska
 ```
 CREATE TABLE raw.mska (
     client VARCHAR,
@@ -2563,7 +2494,7 @@ CREATE TABLE raw.mska (
     is_quarantined BOOLEAN
 );
 ```
--- mskah
+### mskah
 ```
 CREATE TABLE raw.mskah (
     client VARCHAR,
@@ -2583,7 +2514,7 @@ CREATE TABLE raw.mskah (
     is_quarantined BOOLEAN
 );
 ```
--- mslb
+### mslb
 ```
 CREATE TABLE raw.mslb (
     client VARCHAR,
@@ -2616,7 +2547,7 @@ CREATE TABLE raw.mslb (
     is_quarantined BOOLEAN
 );
 ```
--- mslbh
+### mslbh
 ```
 CREATE TABLE raw.mslbh (
     client VARCHAR,
@@ -2634,7 +2565,7 @@ CREATE TABLE raw.mslbh (
     is_quarantined BOOLEAN
 );
 ```
--- mch1
+### mch1
 ```
 CREATE TABLE raw.mch1 (
     client VARCHAR,
@@ -2678,7 +2609,7 @@ CREATE TABLE raw.mch1 (
     is_quarantined BOOLEAN
 );
 ```
--- mkpf
+### mkpf
 ```
 CREATE TABLE raw.mkpf (
     client VARCHAR,
@@ -2717,7 +2648,7 @@ CREATE TABLE raw.mkpf (
     is_quarantined BOOLEAN
 );
 ```
--- mseg
+### mseg
 ```
 CREATE TABLE raw.mseg (
     client VARCHAR,
@@ -2929,7 +2860,7 @@ CREATE TABLE raw.mseg (
     is_quarantined BOOLEAN
 );
 ```
--- t001l
+### t001l
 ```
 CREATE TABLE raw.t001l (
     client VARCHAR,
@@ -2959,7 +2890,7 @@ CREATE TABLE raw.t001l (
     __END_AT TIMESTAMP
 );
 ```
--- t001w
+### t001w
 ```
 CREATE TABLE raw.t001w (
     client VARCHAR,
@@ -3029,7 +2960,7 @@ CREATE TABLE raw.t001w (
     __END_AT TIMESTAMP
 );
 ```
--- time_dimension
+### time_dimension
 ```
 CREATE TABLE raw.time_dimension (
     DAY TIMESTAMP,
