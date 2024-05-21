@@ -7,7 +7,7 @@ with ekko as
 ),
 ekpo as
 (
-    select purchasing_document_num,purchasing_document_item_num,vendor_to_be_supplied,plant,material_number
+    select plant,material_number,purchasing_document_num,purchasing_document_item_num,vendor_to_be_supplied
     from {{ref('EKPO')}}
 )
 select

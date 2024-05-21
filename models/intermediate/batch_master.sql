@@ -44,11 +44,13 @@ MARC as(
   /*If the fiscal year and fiscal month of the entry are beyond the current fiscal period,
   the StockQuantity calculation is done from the current table. Otherwise, the calculation is done
   from the historical table.Comparision is done by creating a date column using fiscal year and fiscal month */
-
-  CASE WHEN Date.DATE >= raw.get_last_day(CAST(MCHB.current_period_fiscal_year as INT), CAST(MCHB.current_period as INT))
-    THEN raw.get_sum(CAST(MCHB.valuated_unrestricted_use_stock as INT),  MCHB.stock_in_qual_inspection, MCHB.restricted_batches_total_stock, MCHB.blocked_stock, MCHB.blocked_stock_return)
-    ELSE raw.get_sum(MCHBH.CLABS, MCHBH.CINSM, MCHBH.CEINM, MCHBH.CSPEM, MCHBH.CRETM)
-    END AS StockQuantity,
+--------------------------------------------------
+  -- CASE WHEN Date.DATE >= raw.get_last_day(CAST(MCHB.current_period_fiscal_year as INT), CAST(MCHB.current_period as INT))
+  --   THEN raw.get_sum(CAST(MCHB.valuated_unrestricted_use_stock as INT),  CAST(MCHB.stock_in_qual_inspection AS INT), CAST(MCHB.restricted_batches_total_stock AS INT), CAST(MCHB.blocked_stock AS INT), CAST(MCHB.blocked_stock_return AS INT))
+  --   ELSE raw.get_sum(CAST(MCHBH.CLABS AS INT), CAST(MCHBH.CINSM AS INT), CAST(MCHBH.CEINM AS INT), CAST(MCHBH.CSPEM AS INT), CAST(MCHBH.CRETM AS INT))
+  --   END AS StockQuantity,
+  raw.get_num(CAST(MCHB.valuated_unrestricted_use_stock as numeric)) AS StockQuantity,
+---------------------------------------------------
 
   --Unit Price Of a Stock
   /*If the fiscal year and fiscal month of the entry are beyond the current fiscal period,
@@ -68,7 +70,7 @@ MARC as(
     ELSE raw.get_division(CAST(MBEWH.value_of_total_valuated_stock AS INT), CAST( MBEWH.total_valued_stock AS INT))
     -- ELSE raw.get_division(0, 1)
     END
-    ELSE raw.get_sum(MCHBH.CLABS, MCHBH.CINSM, MCHBH.CEINM, MCHBH.CSPEM, MCHBH.CRETM) * CASE WHEN Date.DATE >= raw.get_last_day(CAST(MBEW.current_period_fiscal_year AS INT), CAST(MBEW.current_period AS INT))
+    ELSE raw.get_sum(CAST(MCHBH.CLABS AS INT), CAST(MCHBH.CINSM AS INT), CAST(MCHBH.CEINM AS INT), CAST(MCHBH.CSPEM AS INT), CAST(MCHBH.CRETM AS INT)) * CASE WHEN Date.DATE >= raw.get_last_day(CAST(MBEW.current_period_fiscal_year AS INT), CAST(MBEW.current_period AS INT))
     THEN raw.get_division(CAST(MBEW.value_of_total_valuated_stock AS INT), CAST(MBEW.total_valued_stock AS INT))
     ELSE raw.get_division(CAST(MBEWH.value_of_total_valuated_stock AS INT), CAST(MBEWH.total_valued_stock AS INT))
     -- ELSE raw.get_division(0, 1)

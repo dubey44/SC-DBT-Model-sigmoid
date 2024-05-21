@@ -58,4 +58,6 @@ sod.sales_channel
 
 
 
+-- and i.plantslocid = mu.storage_loc and mu.plant = i.plantid
+
 

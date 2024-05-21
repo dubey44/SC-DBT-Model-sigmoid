@@ -8,7 +8,6 @@ sources:
       - name: tbl_vbak_curated_scd1
       - name: tbl_lfa1_curated_scd1
       - name: tbl_vbep_curated_scd1
-      - name: mvke
       - name: tbl_ekpo_curated_scd1
       - name: tbl_ekko_curated_scd1
       - name: tbl_kna1_curated_scd1
@@ -25,6 +24,7 @@ sources:
       - name: mskah
       - name: mslb
       - name: mslbh
+      - name: mvke
       - name: mch1
       - name: mkpf
       - name: mseg

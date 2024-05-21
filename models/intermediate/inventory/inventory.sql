@@ -16,7 +16,7 @@ mvke as(
 
 select 
 mara.material_number as material_number,
-marc.external_procurement_storage_loc as storage_loc, 
+marc.external_procurement_storage_loc as storage_loc,
 marc.plant as plant,
 mara.volume as volume,
 mara.brand as brand,
