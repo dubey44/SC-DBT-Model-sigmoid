@@ -45,11 +45,11 @@ MARC as(
   the StockQuantity calculation is done from the current table. Otherwise, the calculation is done
   from the historical table.Comparision is done by creating a date column using fiscal year and fiscal month */
 --------------------------------------------------
-  -- CASE WHEN Date.DATE >= raw.get_last_day(CAST(MCHB.current_period_fiscal_year as INT), CAST(MCHB.current_period as INT))
-  --   THEN raw.get_sum(CAST(MCHB.valuated_unrestricted_use_stock as INT),  CAST(MCHB.stock_in_qual_inspection AS INT), CAST(MCHB.restricted_batches_total_stock AS INT), CAST(MCHB.blocked_stock AS INT), CAST(MCHB.blocked_stock_return AS INT))
-  --   ELSE raw.get_sum(CAST(MCHBH.CLABS AS INT), CAST(MCHBH.CINSM AS INT), CAST(MCHBH.CEINM AS INT), CAST(MCHBH.CSPEM AS INT), CAST(MCHBH.CRETM AS INT))
-  --   END AS StockQuantity,
-  raw.get_num(CAST(MCHB.valuated_unrestricted_use_stock as numeric)) AS StockQuantity,
+  CASE WHEN Date.DATE >= raw.get_last_day(CAST(MCHB.current_period_fiscal_year as INT), CAST(MCHB.current_period as INT))
+    THEN raw.get_sum(CAST(MCHB.valuated_unrestricted_use_stock as INT),  CAST(MCHB.stock_in_qual_inspection AS INT), CAST(MCHB.restricted_batches_total_stock AS INT), CAST(MCHB.blocked_stock AS INT), CAST(MCHB.blocked_stock_return AS INT))
+    ELSE raw.get_sum(CAST(MCHBH.CLABS AS INT), CAST(MCHBH.CINSM AS INT), CAST(MCHBH.CEINM AS INT), CAST(MCHBH.CSPEM AS INT), CAST(MCHBH.CRETM AS INT))
+    END AS StockQuantity,
+  -- raw.get_num(CAST(MCHB.valuated_unrestricted_use_stock as numeric)) AS StockQuantity,
 ---------------------------------------------------
 
   --Unit Price Of a Stock
@@ -88,16 +88,18 @@ MARC as(
 
     /* The valuation of UnrestrictedStock involves multiplying the UnrestrictedStockQuantity by the unit price. */
   CASE WHEN Date.DATE >= raw.get_last_day(CAST(MCHB.current_period_fiscal_year AS INT), CAST(MCHB.current_period AS INT))
-    THEN raw.get_num(CAST(MCHB.valuated_unrestricted_use_stock AS INT)) * CASE WHEN Date.DATE >= raw.get_last_day(CAST(MBEW.current_period_fiscal_year AS INT), CAST(MBEW.current_period AS INT))
-    THEN raw.get_division(CAST(MBEW.value_of_total_valuated_stock AS INT), CAST( MBEW.total_valued_stock AS INT))
-    ELSE raw.get_division(CAST(MBEWH.value_of_total_valuated_stock AS INT), CAST(MBEWH.total_valued_stock AS INT))
-    -- ELSE raw.get_division(0, 1)
-    END
-    ELSE raw.get_num(CAST(MCHBH.CLABS AS INT)) * CASE WHEN Date.DATE >= raw.get_last_day(CAST(MBEW.current_period_fiscal_year AS INT), CAST(MBEW.current_period AS INT))
-    THEN raw.get_division(CAST(MBEW.value_of_total_valuated_stock AS INT), CAST(MBEW.total_valued_stock AS INT))
-    ELSE raw.get_division(CAST(MBEWH.value_of_total_valuated_stock AS INT), CAST(MBEWH.total_valued_stock AS INT))
-    -- ELSE raw.get_division(0, 1)
-    END
+    THEN raw.get_num(CAST(MCHB.valuated_unrestricted_use_stock AS INT)) * 
+              CASE WHEN Date.DATE >= raw.get_last_day(CAST(MBEW.current_period_fiscal_year AS INT), CAST(MBEW.current_period AS INT))
+              THEN raw.get_division(CAST(MBEW.value_of_total_valuated_stock AS INT), CAST( MBEW.total_valued_stock AS INT))
+              ELSE raw.get_division(CAST(MBEWH.value_of_total_valuated_stock AS INT), CAST(MBEWH.total_valued_stock AS INT))
+              -- ELSE raw.get_division(0, 1)
+              END
+    ELSE raw.get_num(CAST(MCHBH.CLABS AS INT)) * 
+              CASE WHEN Date.DATE >= raw.get_last_day(CAST(MBEW.current_period_fiscal_year AS INT), CAST(MBEW.current_period AS INT))
+              THEN raw.get_division(CAST(MBEW.value_of_total_valuated_stock AS INT), CAST(MBEW.total_valued_stock AS INT))
+              ELSE raw.get_division(CAST(MBEWH.value_of_total_valuated_stock AS INT), CAST(MBEWH.total_valued_stock AS INT))
+              -- ELSE raw.get_division(0, 1)
+              END
     END AS UnrestrictedStockValue,
 
     -- stock in Transit
@@ -228,4 +230,5 @@ CROSS JOIN (
   ON MCHB.material_number = MCHBH.material_num AND MCHB.plant = MCHBH.plant AND MCHB.issue_loc_for_prod_order = MCHBH.storage_location AND MCHB.batch_number = MCHBH.batch_num AND (MCHBH.date = Date.Date OR (Date.Date > MCHBH.Date AND Date.DATE < MCHBH.NextDate))
   /* When sourcing data from the historical table, we select the closest previous entry to the fiscal period. */
   LEFT JOIN  MBEWH
-  ON MBEWH.material_number = MCHB.material_number AND MCHB.plant = MBEWH.valuation_area AND (MBEWH.date = Date.Date OR (Date.Date > MBEWH.Date AND Date.DATE < MBEWH.NextDate))
+  ON MBEWH.material_number = MCHB.material_number 
+  --AND MCHB.plant = MBEWH.valuation_area AND (MBEWH.date = Date.Date OR (Date.Date > MBEWH.Date AND Date.DATE < MBEWH.NextDate))

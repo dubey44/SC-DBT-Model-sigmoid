@@ -6,12 +6,15 @@
     <_.fcp.AccessibleZoneTabOrder.true...AccessibleZoneTabOrder />
     <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
     <AutoCreateAndUpdateDSDPhoneLayouts />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
     <_.fcp.MarkAnimation.true...MarkAnimation />
     <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
     <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
     <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
     <SetMembershipControl />
     <SheetIdentifierTracking />
+    <SortTagCleanup />
     <WindowsPersistSimpleIdentifiers />
     <ZoneBackgroundTransparency />
   </document-format-change-manifest>
@@ -144,12 +147,38 @@
             <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[final_days_of_supply (mart.final_days_of_supply)_3D24F6DBA7D64EF8ACFAE9159F95B228]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
+            <remote-name>unrestrictedstockquantity</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[unrestrictedstockquantity]</local-name>
+            <parent-name>[final_days_of_supply]</parent-name>
+            <remote-alias>unrestrictedstockquantity</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>17</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[final_days_of_supply (mart.final_days_of_supply)_3D24F6DBA7D64EF8ACFAE9159F95B228]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>unrestrictedstockvalue</remote-name>
+            <remote-type>131</remote-type>
+            <local-name>[unrestrictedstockvalue]</local-name>
+            <parent-name>[final_days_of_supply]</parent-name>
+            <remote-alias>unrestrictedstockvalue</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>17</precision>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[final_days_of_supply (mart.final_days_of_supply)_3D24F6DBA7D64EF8ACFAE9159F95B228]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
             <remote-name>sales_channel</remote-name>
             <remote-type>129</remote-type>
             <local-name>[sales_channel]</local-name>
             <parent-name>[final_days_of_supply]</parent-name>
             <remote-alias>sales_channel</remote-alias>
-            <ordinal>8</ordinal>
+            <ordinal>10</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <width>2147483647</width>
@@ -166,7 +195,7 @@
       <_.fcp.ObjectModelTableType.true...column caption='final_days_of_supply' datatype='table' name='[__tableau_internal_object_id__].[final_days_of_supply (mart.final_days_of_supply)_3D24F6DBA7D64EF8ACFAE9159F95B228]' role='measure' type='quantitative' />
       <column caption='Daily Usage' datatype='real' name='[daily_usage]' role='measure' type='quantitative' />
       <column caption='Days Of Supply' datatype='real' name='[days_of_supply]' role='measure' type='quantitative' />
-      <column aggregation='CountD' caption='Material Number' datatype='string' default-role='measure' default-type='quantitative' name='[material_number]' role='dimension' type='nominal' />
+      <column aggregation='CountD' caption='Material Number' datatype='string' name='[material_number]' role='dimension' type='nominal' />
       <column caption='Plant' datatype='string' name='[plant]' role='dimension' type='nominal' />
       <column caption='Sales Channel' datatype='string' name='[sales_channel]' role='dimension' type='nominal' />
       <column caption='Storage Loc' datatype='string' name='[storage_loc]' role='dimension' type='nominal' />
@@ -193,7 +222,7 @@
     </datasource>
   </datasources>
   <worksheets>
-    <worksheet name='Sheet 2'>
+    <worksheet name='MATNRs with highest DOS'>
       <table>
         <view>
           <datasources>
@@ -201,7 +230,174 @@
           </datasources>
           <datasource-dependencies datasource='federated.0xxw0i91aiajwe18h2x6f0xy89s3'>
             <column caption='Days Of Supply' datatype='real' name='[days_of_supply]' role='measure' type='quantitative' />
-            <column aggregation='CountD' caption='Material Number' datatype='string' default-role='measure' default-type='quantitative' name='[material_number]' role='dimension' type='nominal' />
+            <column aggregation='CountD' caption='Material Number' datatype='string' name='[material_number]' role='dimension' type='nominal' />
+            <column-instance column='[material_number]' derivation='None' name='[none:material_number:nk]' pivot='key' type='nominal' />
+            <column-instance column='[days_of_supply]' derivation='Sum' name='[sum:days_of_supply:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]' included-values='in-range'>
+            <min>1002.0</min>
+            <max>2130.625</max>
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[none:material_number:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]' shelf='columns' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#59a14f' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]</rows>
+        <cols>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[none:material_number:nk]</cols>
+      </table>
+      <simple-id uuid='{7684B577-DC37-40DD-995F-681E7D001121}' />
+    </worksheet>
+    <worksheet name='MATNRs with least DOS'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>MATNRs with least DOS</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='final_days_of_supply (mart.final_days_of_supply) (test)' name='federated.0xxw0i91aiajwe18h2x6f0xy89s3' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0xxw0i91aiajwe18h2x6f0xy89s3'>
+            <column caption='Days Of Supply' datatype='real' name='[days_of_supply]' role='measure' type='quantitative' />
+            <column aggregation='CountD' caption='Material Number' datatype='string' name='[material_number]' role='dimension' type='nominal' />
+            <column-instance column='[material_number]' derivation='None' name='[none:material_number:nk]' pivot='key' type='nominal' />
+            <column-instance column='[days_of_supply]' derivation='Sum' name='[sum:days_of_supply:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <manual-sort column='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[none:material_number:nk]' direction='ASC'>
+            <dictionary>
+              <bucket>%all%</bucket>
+              <bucket>&quot;202&quot;</bucket>
+              <bucket>&quot;356&quot;</bucket>
+              <bucket>&quot;280&quot;</bucket>
+              <bucket>&quot;242&quot;</bucket>
+              <bucket>&quot;761&quot;</bucket>
+              <bucket>&quot;554&quot;</bucket>
+              <bucket>&quot;234&quot;</bucket>
+              <bucket>&quot;854&quot;</bucket>
+            </dictionary>
+          </manual-sort>
+          <filter class='quantitative' column='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]' included-values='in-range-or-null'>
+            <min>89.0</min>
+            <max>504.0</max>
+          </filter>
+          <slices>
+            <column>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]' scope='rows' value='Days Of Supply Range' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#e15759' />
+                <format attr='mark-transparency' value='208' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]</rows>
+        <cols>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[none:material_number:nk]</cols>
+      </table>
+      <simple-id uuid='{931A54CE-C886-4978-8507-7DF394B8F2BE}' />
+    </worksheet>
+    <worksheet name='MATNRs with less than 100 DOS'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontsize='11'>MATNRs with less than 100 DOS</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='final_days_of_supply (mart.final_days_of_supply) (test)' name='federated.0xxw0i91aiajwe18h2x6f0xy89s3' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0xxw0i91aiajwe18h2x6f0xy89s3'>
+            <column caption='Days Of Supply' datatype='real' name='[days_of_supply]' role='measure' type='quantitative' />
+            <column aggregation='CountD' caption='Material Number' datatype='string' name='[material_number]' role='dimension' type='nominal' />
+            <column-instance column='[material_number]' derivation='None' name='[none:material_number:nk]' pivot='key' type='nominal' />
+            <column-instance column='[days_of_supply]' derivation='Sum' name='[sum:days_of_supply:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[none:material_number:nk]'>
+            <groupfilter function='level-members' level='[none:material_number:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='quantitative' column='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]' included-values='in-range'>
+            <min>0.30404842561226192</min>
+            <max>100.0</max>
+          </filter>
+          <slices>
+            <column>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[none:material_number:nk]</column>
+            <column>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[none:material_number:nk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{C767B1A7-154C-4318-BC97-A8ED67F33FC5}' />
+    </worksheet>
+    <worksheet name='Sheet 2'>
+      <layout-options>
+        <title>
+          <formatted-text />
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='final_days_of_supply (mart.final_days_of_supply) (test)' name='federated.0xxw0i91aiajwe18h2x6f0xy89s3' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0xxw0i91aiajwe18h2x6f0xy89s3'>
+            <column caption='Days Of Supply' datatype='real' name='[days_of_supply]' role='measure' type='quantitative' />
+            <column aggregation='CountD' caption='Material Number' datatype='string' name='[material_number]' role='dimension' type='nominal' />
             <column-instance column='[material_number]' derivation='None' name='[none:material_number:nk]' pivot='key' type='nominal' />
             <column-instance column='[days_of_supply]' derivation='Sum' name='[sum:days_of_supply:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
@@ -228,121 +424,50 @@
       </table>
       <simple-id uuid='{1CD349FC-8AF0-449F-9E08-D97974511C0B}' />
     </worksheet>
-    <worksheet name='Sheet 3'>
-      <table>
-        <view>
-          <datasources>
-            <datasource caption='final_days_of_supply (mart.final_days_of_supply) (test)' name='federated.0xxw0i91aiajwe18h2x6f0xy89s3' />
-          </datasources>
-          <datasource-dependencies datasource='federated.0xxw0i91aiajwe18h2x6f0xy89s3'>
-            <column caption='Days Of Supply' datatype='real' name='[days_of_supply]' role='measure' type='quantitative' />
-            <column aggregation='CountD' caption='Material Number' datatype='string' default-role='measure' default-type='quantitative' name='[material_number]' role='dimension' type='nominal' />
-            <column-instance column='[material_number]' derivation='None' name='[none:material_number:nk]' pivot='key' type='nominal' />
-            <column-instance column='[days_of_supply]' derivation='Sum' name='[sum:days_of_supply:qk]' pivot='key' type='quantitative' />
-          </datasource-dependencies>
-          <filter class='quantitative' column='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]' included-values='in-range-or-null'>
-            <min>89.0</min>
-            <max>1002.0</max>
-          </filter>
-          <slices>
-            <column>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]</column>
-          </slices>
-          <aggregation value='true' />
-        </view>
-        <style />
-        <panes>
-          <pane selection-relaxation-option='selection-relaxation-allow'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Automatic' />
-          </pane>
-        </panes>
-        <rows>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]</rows>
-        <cols>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[none:material_number:nk]</cols>
-      </table>
-      <simple-id uuid='{7684B577-DC37-40DD-995F-681E7D001121}' />
-    </worksheet>
-    <worksheet name='Sheet 4'>
-      <table>
-        <view>
-          <datasources>
-            <datasource caption='final_days_of_supply (mart.final_days_of_supply) (test)' name='federated.0xxw0i91aiajwe18h2x6f0xy89s3' />
-          </datasources>
-          <datasource-dependencies datasource='federated.0xxw0i91aiajwe18h2x6f0xy89s3'>
-            <column caption='Days Of Supply' datatype='real' name='[days_of_supply]' role='measure' type='quantitative' />
-            <column aggregation='CountD' caption='Material Number' datatype='string' default-role='measure' default-type='quantitative' name='[material_number]' role='dimension' type='nominal' />
-            <column-instance column='[material_number]' derivation='None' name='[none:material_number:nk]' pivot='key' type='nominal' />
-            <column-instance column='[days_of_supply]' derivation='Sum' name='[sum:days_of_supply:qk]' pivot='key' type='quantitative' />
-          </datasource-dependencies>
-          <filter class='quantitative' column='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]' included-values='in-range'>
-            <min>89.0</min>
-            <max>829.0</max>
-          </filter>
-          <slices>
-            <column>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]</column>
-          </slices>
-          <aggregation value='true' />
-        </view>
-        <style>
-          <style-rule element='axis'>
-            <format attr='title' class='0' field='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]' scope='rows' value='Days Of Supply Range' />
-          </style-rule>
-        </style>
-        <panes>
-          <pane selection-relaxation-option='selection-relaxation-allow'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Automatic' />
-          </pane>
-        </panes>
-        <rows>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]</rows>
-        <cols>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[none:material_number:nk]</cols>
-      </table>
-      <simple-id uuid='{931A54CE-C886-4978-8507-7DF394B8F2BE}' />
-    </worksheet>
     <worksheet name='Sheet 5'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run fontcolor='#000000' fontname='Benton Sans Book' fontsize='12'>Unrestricted </run>
+            <run>Æ&#10;</run>
+            <run fontcolor='#000000' fontname='Benton Sans Book' fontsize='12'>stock</run>
+          </formatted-text>
+        </title>
+      </layout-options>
       <table>
         <view>
           <datasources>
             <datasource caption='final_days_of_supply (mart.final_days_of_supply) (test)' name='federated.0xxw0i91aiajwe18h2x6f0xy89s3' />
           </datasources>
           <datasource-dependencies datasource='federated.0xxw0i91aiajwe18h2x6f0xy89s3'>
-            <column caption='Daily Usage' datatype='real' name='[daily_usage]' role='measure' type='quantitative' />
-            <column caption='Days Of Supply' datatype='real' name='[days_of_supply]' role='measure' type='quantitative' />
-            <column-instance column='[plant]' derivation='None' name='[none:plant:nk]' pivot='key' type='nominal' />
-            <column caption='Plant' datatype='string' name='[plant]' role='dimension' type='nominal' />
-            <column-instance column='[daily_usage]' derivation='Sum' name='[sum:daily_usage:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[days_of_supply]' derivation='Sum' name='[sum:days_of_supply:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[unrestrictedstock]' derivation='Sum' name='[sum:unrestrictedstock:qk]' pivot='key' type='quantitative' />
+            <column datatype='real' name='[unrestrictedstock]' role='measure' type='quantitative' />
           </datasource-dependencies>
           <aggregation value='true' />
         </view>
         <style />
         <panes>
-          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
             <view>
               <breakdown value='auto' />
             </view>
-            <mark class='Automatic' />
-          </pane>
-          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:daily_usage:qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Automatic' />
-          </pane>
-          <pane id='4' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]'>
-            <view>
-              <breakdown value='auto' />
-            </view>
-            <mark class='Automatic' />
+            <mark class='Text' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <text column='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:unrestrictedstock:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='size' value='1.5712155103683472' />
+              </style-rule>
+            </style>
           </pane>
         </panes>
-        <rows>([federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:daily_usage:qk] + [federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk])</rows>
-        <cols>[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[none:plant:nk]</cols>
+        <rows />
+        <cols />
       </table>
-      <simple-id uuid='{C767B1A7-154C-4318-BC97-A8ED67F33FC5}' />
+      <simple-id uuid='{EF852059-6A4D-427C-9085-86B325F65EBF}' />
     </worksheet>
   </worksheets>
   <dashboards>
@@ -369,8 +494,8 @@
             </zone>
             <zone h='92750' id='18' param='vert' type-v2='layout-flow' w='98400' x='800' y='6250'>
               <zone h='92750' id='9' param='horz' type-v2='layout-flow' w='98400' x='800' y='6250'>
-                <zone h='92750' id='7' type-v2='layout-basic' w='82400' x='800' y='6250'>
-                  <zone h='92750' id='3' name='Sheet 2' w='41200' x='800' y='6250'>
+                <zone h='92750' id='7' type-v2='layout-basic' w='76700' x='800' y='6250'>
+                  <zone h='92750' id='3' name='Sheet 2' w='38349' x='800' y='6250'>
                     <zone-style>
                       <format attr='border-color' value='#000000' />
                       <format attr='border-style' value='none' />
@@ -378,7 +503,7 @@
                       <format attr='margin' value='4' />
                     </zone-style>
                   </zone>
-                  <zone h='46375' id='5' name='Sheet 3' w='41200' x='42000' y='6250'>
+                  <zone h='57500' id='5' name='MATNRs with highest DOS' w='38351' x='39149' y='6250'>
                     <zone-style>
                       <format attr='border-color' value='#000000' />
                       <format attr='border-style' value='none' />
@@ -386,7 +511,7 @@
                       <format attr='margin' value='4' />
                     </zone-style>
                   </zone>
-                  <zone h='46375' id='6' name='Sheet 4' w='41200' x='42000' y='52625'>
+                  <zone h='35250' id='6' name='MATNRs with least DOS' w='38351' x='39149' y='63750'>
                     <zone-style>
                       <format attr='border-color' value='#000000' />
                       <format attr='border-style' value='none' />
@@ -395,8 +520,26 @@
                     </zone-style>
                   </zone>
                 </zone>
-                <zone fixed-size='160' h='92750' id='8' is-fixed='true' param='vert' type-v2='layout-flow' w='16000' x='83200' y='6250'>
-                  <zone h='8625' id='10' name='Sheet 4' param='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]' show-domain='false' show-null-ctrls='false' type-v2='filter' w='16000' x='83200' y='6250'>
+                <zone fixed-size='217' h='92750' id='8' is-fixed='true' param='vert' type-v2='layout-flow' w='21700' x='77500' y='6250'>
+                  <zone h='18250' id='24' name='MATNRs with less than 100 DOS' w='21700' x='77500' y='6250'>
+                    <layout-cache fixed-size-h='138' fixed-size-w='142' type-h='fixed' type-w='fixed' />
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone h='8625' id='10' name='MATNRs with least DOS' param='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]' show-domain='false' show-null-ctrls='false' type-v2='filter' w='21700' x='77500' y='24500'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone h='38500' id='27' name='Sheet 5' w='21700' x='77500' y='33125'>
+                    <layout-cache fixed-size-w='60' type-h='fixed' type-w='fixed' />
                     <zone-style>
                       <format attr='border-color' value='#000000' />
                       <format attr='border-style' value='none' />
@@ -413,16 +556,17 @@
             <format attr='border-style' value='none' />
             <format attr='border-width' value='0' />
             <format attr='margin' value='8' />
+            <format attr='background-color' value='#efebe8' />
           </zone-style>
         </zone>
       </zones>
       <devicelayouts>
         <devicelayout auto-generated='true' name='Phone'>
-          <size maxheight='1000' minheight='1000' sizing-mode='vscroll' />
+          <size maxheight='1250' minheight='1250' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='23' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98000' id='22' param='vert' type-v2='layout-flow' w='98400' x='800' y='1000'>
-                <zone h='5250' id='21' type-v2='title' w='98400' x='800' y='1000'>
+            <zone h='100000' id='26' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98720' id='25' param='vert' type-v2='layout-flow' w='95734' x='2133' y='640'>
+                <zone h='3360' id='21' type-v2='title' w='95734' x='2133' y='640'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -431,7 +575,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='280' h='92750' id='3' is-fixed='true' name='Sheet 2' w='41200' x='800' y='6250'>
+                <zone fixed-size='280' h='23040' id='3' is-fixed='true' name='Sheet 2' w='95734' x='2133' y='4000'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -440,7 +584,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='280' h='46375' id='5' is-fixed='true' name='Sheet 3' w='41200' x='42000' y='6250'>
+                <zone fixed-size='280' h='23040' id='5' is-fixed='true' name='MATNRs with highest DOS' w='95734' x='2133' y='27040'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -449,7 +593,8 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone h='8625' id='10' name='Sheet 4' param='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]' show-domain='false' show-null-ctrls='false' type-v2='filter' w='16000' x='83200' y='6250'>
+                <zone fixed-size='280' h='23040' id='24' is-fixed='true' name='MATNRs with less than 100 DOS' w='95734' x='2133' y='50080'>
+                  <layout-cache fixed-size-h='481' type-h='fixed' type-w='fixed' />
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -458,7 +603,16 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='280' h='46375' id='6' is-fixed='true' name='Sheet 4' w='41200' x='42000' y='52625'>
+                <zone h='4080' id='10' name='MATNRs with least DOS' param='[federated.0xxw0i91aiajwe18h2x6f0xy89s3].[sum:days_of_supply:qk]' show-domain='false' show-null-ctrls='false' type-v2='filter' w='95734' x='2133' y='73120'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='239' h='19760' id='6' is-fixed='true' name='MATNRs with least DOS' w='95734' x='2133' y='77200'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -482,6 +636,23 @@
     </dashboard>
   </dashboards>
   <windows source-height='30'>
+    <window class='dashboard' maximized='true' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='MATNRs with highest DOS'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='MATNRs with least DOS'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='MATNRs with less than 100 DOS' />
+        <viewpoint name='Sheet 2'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Sheet 5' />
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{43534DEE-F160-4C1D-8A39-9458E20465EA}' />
+    </window>
     <window class='worksheet' name='Sheet 2'>
       <cards>
         <edge name='left'>
@@ -505,7 +676,7 @@
       </cards>
       <simple-id uuid='{AC89585D-FAC3-4761-9B29-965560C1F0EA}' />
     </window>
-    <window class='worksheet' name='Sheet 3'>
+    <window class='worksheet' name='MATNRs with highest DOS'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -531,7 +702,7 @@
       </viewpoint>
       <simple-id uuid='{DE88816C-512E-428E-A8E9-A8E64788EA00}' />
     </window>
-    <window class='worksheet' maximized='true' name='Sheet 4'>
+    <window class='worksheet' name='MATNRs with least DOS'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -547,7 +718,7 @@
           <strip size='2147483647'>
             <card type='rows' />
           </strip>
-          <strip size='31'>
+          <strip size='2147483647'>
             <card type='title' />
           </strip>
         </edge>
@@ -559,7 +730,7 @@
       </cards>
       <simple-id uuid='{328FD6EB-A0E6-4E31-A11A-6114BD4E0368}' />
     </window>
-    <window class='worksheet' name='Sheet 5'>
+    <window class='worksheet' name='MATNRs with less than 100 DOS'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -582,20 +753,28 @@
       </cards>
       <simple-id uuid='{DC452863-DB77-4520-B43D-42D83761984C}' />
     </window>
-    <window class='dashboard' name='Dashboard 1'>
-      <viewpoints>
-        <viewpoint name='Sheet 2'>
-          <zoom type='entire-view' />
-        </viewpoint>
-        <viewpoint name='Sheet 3'>
-          <zoom type='entire-view' />
-        </viewpoint>
-        <viewpoint name='Sheet 4'>
-          <zoom type='entire-view' />
-        </viewpoint>
-      </viewpoints>
-      <active id='-1' />
-      <simple-id uuid='{43534DEE-F160-4C1D-8A39-9458E20465EA}' />
+    <window class='worksheet' name='Sheet 5'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{0EEC97D7-DF70-4467-ACB5-B354847677E2}' />
     </window>
   </windows>
 </workbook>

@@ -25,6 +25,9 @@ pod.plant as plant,
 sum(i.stockquantity) as volume,
 sum(mu.daily_usage) as daily_usage,
 sum(i.stockquantity)/sum(mu.daily_usage) as days_of_supply,
+sum(i.unrestrictedstockquantity) as unrestrictedstockquantity,
+sum(i.unrestrictedstockvalue) as unrestrictedstockvalue,
+
 sod.sales_channel as sales_channel
 
 from 
