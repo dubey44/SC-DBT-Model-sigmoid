@@ -32,3 +32,9 @@ sources:
       - name: t001w
       - name: vbak
       - name: vbap
+      - name: otm_shipment
+      - name: otm_contact
+      - name: otm_order
+      - name: tbl_lips_curated_scd1
+      - name: tbl_likp_curated_scd1 
+      - name: tbl_vbuk_curated_scd1
