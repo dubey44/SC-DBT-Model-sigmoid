@@ -1,0 +1,11 @@
+client,material_number,stockkeeping_unit_alternative_uom,base_uom_conversion_numerator,base_uom_conversion_denominator,european_article_number,international_article_number,category_of_international,length,width,height,unit_of_dimension_length,volume,volume_unit,gross_weight,weight_unit,packing_hierarchy_lower_level_uom,internal_characteristic,uom_sort_number,leading_batch_specific_uom,batch_specific_uom_validation,units_of_measure_usage,unit_of_measurement,generic_material_with_logistical_variants,global_trade_item_number_variant,remaining_volume_after_nesting_percent,maximum_stacking_factor,capacity_usage,category_of_uom,is_quarantined,__start_at,__end_at
+100,000000000000000002,LB,1,1, , , ,0.000,0.000,0.000, ,0.000, ,0.000, , ,0,0, , , , , , ,0,0,0.000, ,false,2023-10-05 08:13:54.000000,""
+100,000000000000000011,PAL,1,1, , , ,0.000,0.000,0.000,IN,0.000,IN3,0.000,LB, ,0,0, , , , , , ,0,0,0.000, ,false,2023-10-27 07:58:36.000000,""
+100,000000000000000012,CSU,1,1, , , ,0.000,0.000,0.000, ,0.000, ,0.000, , ,0,0, , , , , , ,0,0,0.000, ,false,2024-01-26 08:28:39.000000,""
+100,000000000000000012,EQU,1,1, , , ,0.000,0.000,0.000, ,0.000, ,0.000, , ,0,0, , , , , , ,0,0,0.000, ,false,2024-01-26 08:28:39.000000,""
+100,000000000000000103,LB,1,1, , , ,0.000,0.000,0.000, ,0.000, ,0.000, , ,0,0, , , , , , ,0,0,0.000, ,false,2023-10-05 08:12:52.000000,""
+100,000000000000000109,LB,1,1, , , ,0.000,0.000,0.000, ,0.000, ,0.000, , ,0,0, , , , , , ,0,0,0.000, ,false,2023-10-05 08:12:52.000000,""
+100,000000000000000111,LB,1,1, , , ,0.000,0.000,0.000, ,0.000, ,0.000, , ,0,0, , , , , , ,0,0,0.000, ,false,2023-10-05 08:12:52.000000,""
+100,000000000000000123,CS,1,1, , , ,0.000,0.000,0.000, ,0.000, ,0.000,KG, ,0,0, , , , , , ,0,0,0.000, ,false,2023-10-05 08:13:07.000000,""
+100,000000000000000127,LB,1,1, , , ,0.000,0.000,0.000, ,0.000, ,0.000, , ,0,0, , , , , , ,0,0,0.000, ,false,2023-10-05 08:12:52.000000,""
+100,000000000000000139,LB,1,1, , , ,0.000,0.000,0.000, ,0.000, ,0.000, , ,0,0, , , , , , ,0,0,0.000, ,false,2023-10-05 08:12:52.000000,""
