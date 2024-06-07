@@ -39,6 +39,8 @@ models:
       +schema: intermediate
     mart:
       +schema: mart
+    reference_views:
+      +schema: reference_views
 
 seeds:
   SC_DBT_Model_sigmoid:

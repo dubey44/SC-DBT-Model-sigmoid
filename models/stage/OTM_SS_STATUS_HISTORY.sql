@@ -3,4 +3,4 @@
 select
     *
 from
-    {{ source('raw_source', 'tbl_otm_ie_shipmentstatus') }}
+    {{ source('raw_source', 'tbl_otm_ss_status_history') }}

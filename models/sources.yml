@@ -38,3 +38,8 @@ sources:
       - name: tbl_lips_curated_scd1
       - name: tbl_likp_curated_scd1 
       - name: tbl_vbuk_curated_scd1
+      - name: tbl_otm_ie_shipmentstatus
+      - name: tbl_otm_ss_status_history
+      - name: vbfa
+      - name: marm
+      - name: tbl_otm_shipment_refnum

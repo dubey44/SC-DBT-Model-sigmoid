@@ -1,12 +1,13 @@
 {{ config(materialized='incremental') }}
 with kna1 as
 (
-    select client, customer_number
+    select *
     from {{ref('KNA1')}}
 )
 
 select 
-kna1.customer_number as cust_number
+kna1.customer_number as cust_number,
+kna1.name as customer_name
 -- knvv.KDGRP as cust_segment
 
 from 

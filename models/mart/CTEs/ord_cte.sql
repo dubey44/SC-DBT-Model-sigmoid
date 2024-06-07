@@ -1,8 +1,8 @@
 with VBAP as(
-    select * from {{ref('VBAP')}}
+    select sales_document as VBELN from {{ref('VBAP')}}
 )
 
-SELECT sales_document as VBELN,
+SELECT VBELN,
 COUNT(*) as COUNT_ORD
 FROM VBAP
 GROUP BY VBELN
