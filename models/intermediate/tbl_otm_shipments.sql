@@ -1,16 +1,5 @@
--- from ${snowflake_catalog_name}.raw_otm.TBL_OTM_SHIPMENT shipment
--- left join OTM_SHIPMENT_STOP_TYPE_P
--- on shipment_stop_SHIPMENT_GID_P = shipment.SHIPMENT_GID
--- left join OTM_SHIPMENT_STOP_TYPE_D
--- on shipment_stop_SHIPMENT_GID_D = shipment.SHIPMENT_GID
--- left join ${snowflake_catalog_name}.raw_otm.TBL_OTM_LOCATION otm_location_source
--- on shipment.SOURCE_LOCATION_GID = otm_location_source.LOCATION_GID
--- left join ${snowflake_catalog_name}.raw_otm.TBL_OTM_LOCATION otm_location_dest
--- on shipment.DEST_LOCATION_GID = otm_location_dest.LOCATION_GID
--- left join ${snowflake_catalog_name}.raw_otm.TBL_OTM_SHIPMENT_REFNUM shipment_refnum
--- on shipment_refnum.SHIPMENT_GID = shipment.SHIPMENT_GID
 {{ config(materialized='incremental') }}
-with TBL_OTM_SHIPMENT as(
+with OTM_SHIPMENT as(
   select * from {{ref('OTM_SHIPMENT')}}
 ),
 OTM_SHIPMENT_STOP_TYPE_P as(
@@ -25,8 +14,6 @@ TBL_OTM_LOCATION as(
 TBL_OTM_SHIPMENT_REFNUM as(
   select * from {{ref('TBL_OTM_SHIPMENT_REFNUM')}}
 )
-
-
 
 select 
 shipment.SERVPROV_GID as servprov_gid,
@@ -76,15 +63,15 @@ OTM_SHIPMENT_STOP_TYPE_D.site_delivery_appt,
 OTM_SHIPMENT_STOP_TYPE_D.actual_arrival_at_consignee,
 OTM_SHIPMENT_STOP_TYPE_D.actual_departure_at_consignee,
 shipment_refnum.SHIPMENT_REFNUM_VALUE as shipment_refnum_value
-from TBL_OTM_SHIPMENT shipment
+from OTM_SHIPMENT shipment
 left join OTM_SHIPMENT_STOP_TYPE_P
-on shipment_stop_SHIPMENT_GID_P = shipment.SHIPMENT_GID
+on OTM_SHIPMENT_STOP_TYPE_P.shipment_stop_SHIPMENT_GID_P = shipment.SHIPMENT_XID
 left join OTM_SHIPMENT_STOP_TYPE_D
-on shipment_stop_SHIPMENT_GID_D = shipment.SHIPMENT_GID
+on OTM_SHIPMENT_STOP_TYPE_D.shipment_stop_SHIPMENT_GID_D = shipment.SHIPMENT_XID
 left join TBL_OTM_LOCATION otm_location_source
 on shipment.SOURCE_LOCATION_GID = otm_location_source.LOCATION_GID
 left join TBL_OTM_LOCATION otm_location_dest
 on shipment.DEST_LOCATION_GID = otm_location_dest.LOCATION_GID
 left join TBL_OTM_SHIPMENT_REFNUM shipment_refnum
-on shipment_refnum.SHIPMENT_GID = shipment.SHIPMENT_GID
+on shipment_refnum.SHIPMENT_GID = shipment.SHIPMENT_XID
 where shipment_refnum.SHIPMENT_REFNUM_QUAL_GID = 'BM'

@@ -2,7 +2,7 @@ with VBAP as(
     select 
     sales_document as VBELN,
     reason_for_rejection as ABGRU,
-    subtotal_1_pricing as KZWI1 
+    subtotal_1_pricing as KZWI1
     from {{ref('VBAP')}}
 )
 SELECT VBELN, /*Order Number*/
